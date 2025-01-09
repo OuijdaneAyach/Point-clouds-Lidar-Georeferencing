@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Lidar Visualization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            background-color: #f4f6f8;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 60px;
+        }
+
+        .container {
+    flex: 1;
+    margin-bottom: 50px;
+}
+
+
+        .navbar {
+            background: linear-gradient(90deg, #1f2937, #4b6cb7);
+            padding: 10px 25px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fdfdfd;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    position: absolute;
+    height: 10px;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+
+        .navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        color: #d1e4f6;
+    }
+
+    .nav-icon {
+    position: absolute;
+    left: 1350px;
+    vertical-align: middle;
+}
+
+
+
+
+        .upload-container {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+}
+
+        .list-group-item input {
+            margin-right: 10px;
+            accent-color: #3f84f6;
+        }
+
+        .btn-primary {
+            background-color: #4b6cb7;
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 15px 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #354a85;
+            box-shadow: 0 8px 15px rgba(75, 108, 183, 0.4);
+        }
+
+        .form-control {
+            border-radius: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .plot {
+            margin-top: 30px;
+            position: relative;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+       footer {
+    background-color: #354a85;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10; /* Le footer sera visible au-dessus de tout autre contenu */
+}
+
+
+        .gps-upload-container {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .gps-upload-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .gps-upload-container .btn-download {
+        background-color: #354a85;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .gps-upload-container .btn-download:hover {
+        background-color: #2a3772;
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-download {
+        background-color: #354a85;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-download:hover {
+        background-color: #2a3772;
+        transform: translateY(-3px);
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    }
+
+
+
+    h1, h2 {
+        color: #4b6cb7;
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    .alert {
+        border-radius: 10px;
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-cloud-arrow-up-fill"></i> 3D Lidar Georeferencing Application
+
+        </a>
+        <li class="nav-item">
+                <img src="{% static 'favicon.ico' %}" alt="App Icon" class="nav-icon">
+            </li>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav"></ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="upload-container text-center fade-in">
+        <h2 class="mb-4">Upload Your Lidar Files</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="file" name="files[]" multiple class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload and Plot</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger mt-4">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+
+    {% if plot_html %}
+    <div class="plot mt-5">
+        {{ plot_html|safe }}
+    </div>
+    <div class="gps-upload-container text-center fade-in mt-5">
+        <h2 class="mb-4">Upload GPS Data</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="file" name="gps_file" class="form-control" accept=".txt">
+            </div>
+            <button type="submit" class="btn btn-primary">Georeference</button>
+        </form>
+    </div>
+    {% endif %}
+
+    {{% if georeferenced_plot_html %}
+    <div class="plot mt-5">
+        {{ georeferenced_plot_html|safe }}
+    </div>
+    <div class="text-center mt-4">
+        <button class="btn-download" onclick="window.location.href='/download_results?file_name=georeferenced_data.txt'">
+            Download Data
+        </button>
+        <button class="btn-download" onclick="window.location.href='/download_graph'">
+            Download Graph
+        </button>
+    </div>
+    {% endif %}
+
+</div>
+
+<!-- Modal for Output Path -->
+<div class="modal fade" id="outputPathModal" tabindex="-1" aria-labelledby="outputPathModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="outputPathModalLabel">Choose Output Path</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="outputPathForm" method="post" action="/set_output_path">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="outputPath" class="form-label">Output Path</label>
+                        <input type="text" class="form-control" id="outputPath" name="output_path" placeholder="Enter output path">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Path</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024. 3D Lidar Georeferecing Application. Built By OUIJDANE AYACH. Geoinfromation 3rd year.</p>
+</footer>
+
+<script>
+    function toggleTrace(index) {
+        const plotDiv = document.querySelector('.plot .js-plotly-plot');
+        const isVisible = document.getElementById(`file-${index + 1}`).checked;
+        Plotly.restyle(plotDiv, { visible: isVisible ? true : 'legendonly' }, [index]);
+    }
+
+    function toggleFileList() {
+        const fileListContainer = document.querySelector('.file-list-container');
+        fileListContainer.style.display = fileListContainer.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+
+</body>
+</html>
