@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Lidar Visualization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .plot-container {
+            margin-top: 30px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mb-4">3D Lidar Visualization</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="mb-4">
+            <input type="file" name="files[]" multiple class="form-control mb-3">
+            <button type="submit" class="btn btn-primary">Upload and Plot</button>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if plot_html %}
+        <div class="plot-container">
+            {{ plot_html|safe }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
