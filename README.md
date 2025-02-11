@@ -40,8 +40,7 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 ✅ **3D Visualization of LiDAR Data** – Interactive display of LiDAR point clouds.  
 ✅ **Georeferencing System** – Processing and aligning GPS and LiDAR data.  
 ✅ **User-friendly Web Interface** – Built with **Django** for seamless navigation.  
-✅ **Efficient File Handling** – Supports multiple **LiDAR (.las, .laz)** and **GPS formats**.  
-✅ **Database Integration** – Stores and retrieves processed geospatial data.  
+✅ **Efficient File Handling** – Supports multiple **LiDAR (.las, .laz)** and **GPS formats**.   
 ✅ **Scalability** – Easily extendable for further GIS functionalities.  
 
 ---
@@ -50,5 +49,5 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 
 ### **1️⃣ Clone the Repository**  
 ```sh
-git clone https://github.com/YOUR_GITHUB/Point-clouds-Lidar-Georeferencing.git
+git clone https://github.com/OuijdaneAyach/Point-clouds-Lidar-Georeferencing.git
 cd Point-clouds-Lidar-Georeferencing
