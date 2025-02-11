@@ -11,10 +11,6 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 
 ---
 
-## 📸 **Project Screenshots**
-
-## 📸 **Project Screenshots**
-
 ### 1️⃣ Main Interface
 ![Main Interface](Demo/interface_principale.png)
 
