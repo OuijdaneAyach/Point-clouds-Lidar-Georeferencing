@@ -13,26 +13,29 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 
 ## 📸 **Project Screenshots**
 
-### 1️⃣ Interface principale
-![Interface principale](Demo/interface_principale.png)
+## 📸 **Project Screenshots**
 
-### 2️⃣ Importer les données GPS
-![Importer les données GPS](Demo/importer_donnees_GPS.png)
+### 1️⃣ Main Interface
+![Main Interface](Demo/interface_principale.png)
 
-### 3️⃣ Importer les données du Scanner Faro
-![Importer les données du Scanner Faro](Demo/importer_scanner_faro.png)
+### 2️⃣ Import GPS Data
+![Import GPS Data](Demo/importer_donnees_GPS.png)
 
-### 4️⃣ Interface pour importer les données GPS
-![Interface pour importer les données GPS](Demo/interface_import_GPS.png)
+### 3️⃣ Import Data from Faro Scanner
+![Import Data from Faro Scanner](Demo/importer_scanner_faro.png)
 
-### 5️⃣ Télécharger le fichier des données et le graphe du LIDAR géoréférencé
-![Télécharger les fichiers](Demo/telecharger_fichier_LIDAR.png)
+### 4️⃣ Interface for Importing GPS Data
+![Interface for Importing GPS Data](Demo/interface_import_GPS.png)
 
-### 6️⃣ Visualiser le nuage de points brut
-![Nuage de points brut](Demo/visualiser_nuage_brute.png)
+### 5️⃣ Download Data Files and the Georeferenced LiDAR Graph
+![Download Data Files](Demo/telecharger_fichier_LIDAR.png)
 
-### 7️⃣ Visualiser le nuage de points géoréférencé
-![Nuage de points géoréférencé](Demo/visualiser_nuage_georef.png)
+### 6️⃣ View Raw Point Cloud
+![View Raw Point Cloud](Demo/visualiser_nuage_brute.png)
+
+### 7️⃣ View Georeferenced Point Cloud
+![View Georeferenced Point Cloud](Demo/visualiser_nuage_georef.png)
+
 
 
 ## 🚀 **Features**  
