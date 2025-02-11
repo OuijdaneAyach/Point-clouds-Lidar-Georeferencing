@@ -13,7 +13,7 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 
 ## 📸 **Project Preview**  
 ### User Interface:  
-![UI Preview](images/ui_preview.png)  
+![UI Preview](Demo/Interface principale de l’applicaton.png)  
 
 ### 3D LiDAR Visualization:  
 ![LiDAR View](images/lidar_view.png)  
