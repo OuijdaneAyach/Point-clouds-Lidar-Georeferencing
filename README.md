@@ -6,7 +6,8 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 ---
 
 ## 🎥 **Demo Video**
-➡️ [Watch the demonstration video](Vidéo démonstrative de l'application - Ouijdane Ayach.mp4)  
+➡️ [Watch the demonstration video](https://drive.google.com/file/d/1-CVfprYVqvV0LS8xYku3AKEl9Fhc4Aeg/view?usp=sharing)
+ 
 
 ---
 
