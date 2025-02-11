@@ -11,14 +11,29 @@ This application supports **LiDAR and GPS file processing, data georeferencing, 
 
 ---
 
-## 📸 **Project Preview**  
-### User Interface:  
-![UI Preview](Demo/Interface principale de l’applicaton.png)  
+## 📸 **Project Screenshots**
 
-### 3D LiDAR Visualization:  
-![LiDAR View](images/lidar_view.png)  
+### 1️⃣ Interface principale
+![Interface principale](Demo/interface_principale.png)
 
----
+### 2️⃣ Importer les données GPS
+![Importer les données GPS](Demo/importer_donnees_GPS.png)
+
+### 3️⃣ Importer les données du Scanner Faro
+![Importer les données du Scanner Faro](Demo/importer_scanner_faro.png)
+
+### 4️⃣ Interface pour importer les données GPS
+![Interface pour importer les données GPS](Demo/interface_import_GPS.png)
+
+### 5️⃣ Télécharger le fichier des données et le graphe du LIDAR géoréférencé
+![Télécharger les fichiers](Demo/telecharger_fichier_LIDAR.png)
+
+### 6️⃣ Visualiser le nuage de points brut
+![Nuage de points brut](Demo/visualiser_nuage_brute.png)
+
+### 7️⃣ Visualiser le nuage de points géoréférencé
+![Nuage de points géoréférencé](Demo/visualiser_nuage_georef.png)
+
 
 ## 🚀 **Features**  
 
